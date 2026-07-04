@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FEEL GOA. LIVE SUSEGAD</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@600&display=swap"rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="goa-heading">Feel Goa. Live Susegad</h1>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#attractions">Attractions</a></li>
+          <li><a href="#plan">Plan Trip</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#tips">Travel Tips</a></li>
+          <li><a href="#review">Reviews</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="https://forecast7.com/en/15d3074d12/goa/" target="_blank" class="weather-link">🌤️ Goa Weather</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home" class="home-section">
+      <div class="home-content">
+        <h1 class="home-title">Explore Goa Susegad</h1>
+        <p class="home-subtitle">
+          Where the sun kisses the sea and life flows slow & sweet
+        </p>
+        <button id="exploreBtn" class="explore-button">Explore More</button>
+      </div>
+    </section>
+
+    <section id="attractions" class="attractions-section">
+      <h2 class="section-title">Top Attractions in Goa</h2>
+      <div class="attraction-cards">
+        <div class="attraction-card">
+          <img src="baga.jpg" alt="Baga Beach" />
+          <h3>Baga Beach</h3>
+          <p>
+            Experience Goa’s lively beach life, water sports, and nightlife at
+            Baga Beach.
+          </p>
+          <div class="card-buttons">
+            <button onclick="addToItinerary('Baga Beach')">Add to Itinerary</button>
+            <a href="https://www.google.com/maps" target="_blank" class="btn-map"> Open Google Maps</a>
+          </div>
+        </div>
+
+        <div class="attraction-card">
+          <img src="Dudhsagar.jpg" alt="Dudhsagar Falls" />
+          <h3>Dudhsagar Falls</h3>
+          <p>
+            Majestic 4-tiered waterfall on the Mandovi River, surrounded by lush
+            forests.
+          </p>
+          <div class="card-buttons">
+            <button onclick="addToItinerary('Dudhsagar Falls')">Add to Itinerary</button>
+             <a href="https://www.google.com/maps" target="_blank" class="btn-map"> Open Google Maps</a>
+          </div>
+        </div>
+
+        <div class="attraction-card">
+          <img src="basilica.jpg" alt="Basilica of Bom Jesus" />
+          <h3>Basilica of Bom Jesus</h3>
+          <p>
+            UNESCO World Heritage Site with baroque architecture and rich Goan
+            history.
+          </p>
+          <div class="card-buttons">
+            <button onclick="addToItinerary('Basilica of Bom Jesus')">Add to Itinerary</button>
+            <a href="https://www.google.com/maps" target="_blank" class="btn-map"> Open Google Maps</a>
+          </div>
+        </div>
+
+        <div class="attraction-card">
+          <img src="reis.jpg" alt="Reis Magos Fort" />
+          <h3>Reis Magos Fort</h3>
+          <p>
+            A beautifully restored 16th-century fort with stunning river views and rich Portuguese history.
+          </p>
+          <div class="card-buttons">
+            <button onclick="addToItinerary('Reis Magos Fort')">Add to Itinerary</button>
+            <a href="https://www.google.com/maps" target="_blank" class="btn-map"> Open Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan" class="main-section" style="background-color: #cce7ff; padding: 60px 20px;">
+        <h2 class="section-title">Plan Your Trip</h2>
+        <div class="plan-form">
+            <label>
+                Trip Length:
+                <select id="tripLength">
+                    <option value="2">2 Days</option>
+                    <option value="3">3 Days</option>
+                    <option value="5">5 Days</option>
+                    <option value="7">1 Week</option>
+                </select>
+            </label>
+            <fieldset class="interest-group">
+                <legend>Interests:</legend>
+                <label><input type="checkbox" name="interests" value="Beaches" /> Beaches</label>
+                <label><input type="checkbox" name="interests" value="Culture & History" /> Culture & History</label>
+                <label><input type="checkbox" name="interests" value="Adventure" /> Adventure</label>
+                <label><input type="checkbox" name="interests" value="Food & Nightlife" /> Food & Nightlife</label>
+        </fieldset>
+            <label>
+                Location:
+                <select id="location">
+                    <option value="north">North Goa</option>
+                    <option value="south">South Goa</option>
+                    <option value="both">Both</option>
+                </select>
+            </label>
+            <label>
+                Travel Type:
+                <select id="travelType">
+                    <option value="solo">Solo</option>
+                    <option value="family">Family</option>
+                    <option value="friends">Friends</option>
+                    <option value="couple">Couple</option>
+                </select>
+            </label>
+            <button onclick="generateItinerary()">Generate My Itinerary</button>
+            <div id="itineraryResult" class="itinerary-box"></div>
+  </div>
+</section>
+
+    <section id="gallery" class="gallery-section" style="background-color: #fde2e2; padding: 60px 20px 120px 20px;">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-filters">
+            <button onclick="filterGallery('all')">All</button>
+            <button onclick="filterGallery('beach')">Beaches</button>
+            <button onclick="filterGallery('food')">Food</button>
+            <button onclick="filterGallery('culture')">Culture</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item beach" onclick="openLightbox('vagator.jpg', 'Vagator Beach', 'Famous for sunset views & nightlife.')">
+                <img src="vagator.jpg" alt="Vagator Beach">
+                <div class="caption">Vagator Beach</div>
+            </div>
+            <div class="gallery-item food" onclick="openLightbox('bebinca.webp', 'Goan Bebinca', 'Traditional layered dessert.')">
+                <img src="bebinca.webp" alt="Goan Bebinca">
+                <div class="caption">Goan Bebinca</div>
+            </div>
+            <div class="gallery-item culture" onclick="openLightbox('basilica.jpg', 'Basilica of Bom Jesus', 'UNESCO baroque church.')">
+                <img src="basilica.jpg" alt="Bom Jesus">
+                <div class="caption">Bom Jesus</div>
+            </div>
+            <div class="gallery-item beach" onclick="openLightbox('palolem.jpg', 'Palolem Beach', 'Peaceful crescent-shaped beach.')">
+                <img src="palolem.jpg" alt="Palolem Beach">
+                <div class="caption">Palolem Beach</div>
+            </div>
+            <div class="gallery-item food" onclick="openLightbox('thali.jpg', 'Goan Fish Thali', 'A traditional seafood thali served with rice, curry, fried fish, and solkadi.')">
+                <img src="thali.jpg" alt="Goan Fish Thali">
+                <div class="caption">Goan Fish Thali</div>
+            </div>
+            <div class="gallery-item culture" onclick="openLightbox('chruch.jpg', 'Basilica Our Lady of the Immaculate Conception Church Bom Jesus', 'Iconic white church in Panaji with beautiful stairways')">
+                <img src="chruch.jpg" alt="chruch">
+                <div class="caption">Our Lady of the Immaculate Conception Church</div>
+            </div>
+            <div class="gallery-item culture" onclick="openLightbox('Aguada.jpg', 'Aguada Fort', 'Aguada Fort', '17th-century Portuguese fort with a lighthouse and panoramic sea views.')">
+                <img src="Aguada.jpg" alt="fort">
+                <div class="caption">Aguada Fort</div>
+            </div>
+            <div class="gallery-item beach" onclick="openLightbox('candolim.jpg', 'Candolim Beach', 'Peaceful beach perfect for relaxation and scenic walks.')">
+                <img src="candolim.jpg" alt="Candolim Beach">
+                <div class="caption">Candolim Beach</div>
+            </div>
+        </div>
+    </section>
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption"></div>
+    </div>
+
+   <section id="tips" class="tips-section">
+  <h2>Travel Tips & Local Guides</h2>
+
+  <div class="tips-container">
+    <div class="tip-card">
+      <h3>🍲 Must-Try Goan Food</h3>
+      <ul>
+        <li>Fish Curry Rice</li>
+        <li>Bebinca (layered dessert)</li>
+        <li>Goan Sausages</li>
+        <li>Feni (local spirit)</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h3>✅ Do’s in Goa</h3>
+      <ul>
+        <li>Respect local culture & churches</li>
+        <li>Try local seafood & markets</li>
+        <li>Use sunscreen & stay hydrated</li>
+        <li>Negotiate prices at flea markets</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h3>🚫 Don’ts in Goa</h3>
+      <ul>
+        <li>Don’t litter on beaches</li>
+        <li>Don’t take photos where prohibited</li>
+        <li>Don’t disturb wildlife or nature spots</li>
+        <li>Don’t drive under influence</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h3>🛍️ Local Markets to Explore</h3>
+      <ul>
+        <li><strong>Anjuna Flea Market:</strong> Clothes, handicrafts, food</li>
+        <li><strong>Mapusa Market:</strong> Fresh produce & spices</li>
+        <li><strong>Arpora Night Market:</strong> Music, food, stalls</li>
+        <li><strong>Panjim Market:</strong> Authentic Goan items</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h3>🚗 Transport Tips</h3>
+      <ul>
+        <li>Rent a scooter or bike for flexibility</li>
+        <li>Carry your driving license at all times</li>
+        <li>Use app-based taxis or prepaid cabs</li>
+        <li>Public buses are cheap but not frequent</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+  <h3>💸 Currency & Payments</h3>
+  <ul>
+    <li>Carry some cash for local vendors</li>
+    <li>ATMs are widely available</li>
+    <li>UPI & cards accepted in most places</li>
+    <li>Avoid exchanging money at airports</li>
+  </ul>
+</div>
+<div class="tip-card">
+  <h3>🌐 Network & Connectivity</h3>
+  <ul>
+    <li>Get a local SIM for better coverage</li>
+    <li>Wi-Fi is available in cafes & hotels</li>
+    <li>Download offline maps for rural areas</li>
+    <li>Mobile data is fast & affordable</li>
+  </ul>
+</div>
+<div class="tip-card">
+  <h3>📞 Emergency Contacts</h3>
+  <ul>
+    <li><strong>Tourist Helpline:</strong> 1363</li>
+    <li><strong>Police:</strong> 100</li>
+    <li><strong>Ambulance:</strong> 108</li>
+    <li>Nearest hospital or clinic info</li>
+  </ul>
+</div>
+  </div>
+</section>
+
+<section id="review" class="review-section">
+  <h2>What Travelers Say</h2>
+  <div class="review-cards">
+    <div class="review-card">
+      <h4>Priya S. ⭐⭐⭐⭐⭐</h4>
+      <p>"The beaches were clean, the food was heavenly! Goa stole my heart."</p>
+    </div>
+    <div class="review-card">
+      <h4>Ravi M. ⭐⭐⭐⭐☆</h4>
+      <p>"Had a great time exploring the forts and flea markets. Must-visit!"</p>
+    </div>
+    <div class="review-card">
+      <h4>Sophie D. ⭐⭐⭐⭐⭐</h4>
+      <p>"As a foreigner, I felt safe and welcomed. Loved the culture & sunsets!"</p>
+    </div>
+  </div>
+  <div class="review-form-container">
+    <h3>Leave Your Review</h3>
+    <form id="reviewForm">
+      <input type="text" placeholder="Your Name" required />
+      <textarea placeholder="Your Review" rows="4" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+    <div id="userReviews" class="review-cards"></div>
+  </div>
+</section>
+
+<footer id = "contact" class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <h3>Explore Susegad Goa</h3>
+      <p>📍 Panaji, Goa 403001</p>
+      <p>📧 exploregoa@email.com</p>
+      <p>📞 +91 98765 43210</p>
+      <a href="https://www.google.com/maps" target="_blank" class="btn-map">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="footer-social-names">
+      <p><strong>Facebook:</strong> @ExploreGoa</p>
+      <p><strong>Instagram:</strong> @goa_susegad</p>
+      <p><strong>Twitter:</strong> @GoaTourismLive</p>
+    </div>
+
+
+    <div class="footer-top">
+      <a href="#home" class="scroll-top">⬆ Top</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Explore Goa. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+    <!-- MODAL POPUP -->
+    <div id="imageModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Discover Goa's Charm</h2>
+
+        <div class="carousel">
+          <div class="slide active">
+            <img src="beach.jpg" alt="Goa Beach" />
+            <p>Golden sands & serene beaches</p>
+          </div>
+          <div class="slide">
+            <img src="food.jpg" alt="Goan Food" />
+            <p>Spicy Goan Fish Curry & Sweet Bebinca</p>
+          </div>
+          <div class="slide">
+            <img src="festival.jpg" alt="Goa Festival" />
+            <p>Colorful Carnivals & Cultural Joy</p>
+          </div>
+        </div>
+
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+      </div>
+    </div>
+    <div class="music-toggle">
+  <button id="musicBtn">🔈 Play Music</button>
+  <audio id="bgMusic" loop>
+    <source src="goa.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+  </body>
+</html>
